@@ -844,3 +844,240 @@ footer strong {
     font-size: 0.95rem;
     line-height: 1.6;
 }
+/* ==========================================
+   ====== COMPLETE RESPONSIVE SYSTEM ======
+   ========================================== */
+
+/* --- Fluid Core Containers --- */
+body {
+    overflow-x: hidden; /* Prevents frustrating horizontal side-scrolling on phones */
+}
+
+/* Adjust standard container gutters dynamically */
+.stats-container, .match-center-container, .news-grid, .awards-section, .bio-section {
+    width: 100%;
+    padding-left: 5% !important;
+    padding-right: 5% !important;
+    box-sizing: border-box;
+}
+
+/* --- Breakpoint: Tablets & Large Phones (max-width: 992px) --- */
+@media (max-width: 992px) {
+    /* Fluid Typography Scaling */
+    .title {
+        font-size: 4rem !important;
+    }
+    
+    .subtitle {
+        font-size: 1.2rem !important;
+        letter-spacing: 4px !important;
+    }
+
+    /* Hero Layout Optimization */
+    .hero-content {
+        padding: 6rem 1rem 3rem;
+    }
+
+    .hero-photo {
+        max-width: 280px; /* Scale down Messi's portrait for smaller tablet screens */
+    }
+
+    /* Widgets: Stack Match Widget and Ranking vertically */
+    .match-center-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .status-card {
+        width: 100% !important;
+    }
+
+    /* Official Watermarks: Shrink so they don't leak out of bounds */
+    .bg-watermark, .stats-watermark {
+        font-size: 10rem !important;
+        top: 30% !important;
+        right: 0 !important;
+    }
+
+    /* Biography Timeline Transformation */
+    .timeline-item, .timeline-item.reverse {
+        flex-direction: column !important; /* Forces layout to read straight down natively */
+        text-align: center;
+        padding: 20px;
+        gap: 25px;
+    }
+
+    .timeline-img-container, .timeline-text {
+        width: 100% !important;
+        flex: none !important;
+    }
+
+    .timeline-img {
+        height: 280px !important;
+    }
+}
+
+/* --- Breakpoint: Small Mobile Viewports (max-width: 600px) --- */
+@media (max-width: 600px) {
+    /* Extreme Typography Tuning */
+    .title {
+        font-size: 2.8rem !important;
+    }
+
+    .timeline-text h2 {
+        font-size: 1.8rem !important;
+    }
+
+    .bg-watermark, .stats-watermark {
+        font-size: 6rem !important;
+        opacity: 0.04; /* Extra subtle on tight mobile spaces */
+    }
+
+    /* Navigation Menu Fixes */
+    .nav-links {
+        gap: 15px !important;
+    }
+    
+    .nav-links a {
+        font-size: 0.8rem !important;
+        letter-spacing: 1px !important;
+    }
+
+    /* Match Center Detail Shrinking */
+    .match-details {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 5px;
+    }
+
+    .match-details .team img {
+        width: 45px !important;
+        height: 45px !important;
+    }
+
+    .match-details .team span {
+        font-size: 0.75rem !important;
+    }
+
+    .match-info .vs {
+        font-size: 1rem !important;
+    }
+
+    .match-info .date {
+        font-size: 0.8rem !important;
+    }
+
+    /* Stats System Overhaul for Tiny Touchscreens */
+    .stats-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .stats-filters {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px !important;
+    }
+
+    .stat-row {
+        flex-direction: column-reverse; /* Places the giant circular numeric badge directly above its progress bar */
+        align-items: center !important;
+        gap: 15px;
+        background: rgba(255, 255, 255, 0.02);
+        padding: 20px 15px;
+        border-radius: 12px;
+    }
+
+    .stat-bar-container {
+        width: 100% !important;
+    }
+
+    .stat-sub {
+        justify-content: center !important;
+        flex-wrap: wrap;
+        gap: 10px !important;
+        margin-top: 8px;
+    }
+
+    /* Achievements Layout Optimization */
+    .award-card {
+        padding: 30px 15px !important;
+    }
+    
+    .award-count {
+        font-size: 3.5rem !important;
+    }
+}
+/* ==========================================
+   === MOBILE RESPONSIVE HAMBURGER SYSTEM ===
+   ========================================== */
+
+@media (max-width: 992px) {
+    /* Show the hamburger toggle button */
+    .nav-toggle {
+        display: flex !important;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 21px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        z-index: 1001; /* Stays floating above the drawer overlay */
+    }
+
+    .nav-toggle span {
+        width: 100%;
+        height: 3px;
+        background-color: var(--text-main);
+        border-radius: 2px;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Transform the Hamburger icon into an "X" when open */
+    .nav-toggle.open span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+    .nav-toggle.open span:nth-child(2) {
+        opacity: 0;
+    }
+    .nav-toggle.open span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+
+    /* Convert standard Nav Links into a Cinematic Slide-In Drawer overlay */
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Completely hidden off-screen by default */
+        width: 75%;
+        max-width: 320px;
+        height: 100vh;
+        background: rgba(10, 16, 30, 0.98);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center;
+        justify-content: center;
+        gap: 35px !important;
+        padding: 2rem;
+        z-index: 1000;
+        transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* The Trigger class to slide the menu inside view */
+    .nav-links.active {
+        right: 0;
+    }
+
+    .nav-links a {
+        font-size: 1.2rem !important;
+        letter-spacing: 2px !important;
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+    }
+}

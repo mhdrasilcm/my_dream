@@ -88,3 +88,40 @@ window.countUpValue = function countUpValue(el, endValue, duration = 900) {
     }
     requestAnimationFrame(tick);
 };
+// --- CINEMATIC MOBILE NAVIGATION MENU DRAWERS ---
+document.addEventListener('DOMContentLoaded', () => {
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    const navItems = document.querySelectorAll('.nav-links a');
+
+    if (navToggle && navLinks) {
+        // Toggle menu when clicking hamburger button
+        navToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navToggle.classList.toggle('open');
+            navLinks.classList.toggle('active');
+            
+            // Toggle accessibility parameters
+            const isOpen = navToggle.classList.contains('open');
+            navToggle.setAttribute('aria-expanded', isOpen);
+        });
+
+        // Automatically close the menu when clicking any link inside it
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navToggle.classList.remove('open');
+                navLinks.classList.remove('active');
+                navToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // Close drawer if user clicks anywhere outside of the open menu area
+        document.addEventListener('click', (e) => {
+            if (navLinks.classList.contains('active') && !navLinks.contains(e.target) && !navToggle.contains(e.target)) {
+                navToggle.classList.remove('open');
+                navLinks.classList.remove('active');
+                navToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+    }
+});
