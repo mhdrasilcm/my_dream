@@ -1183,3 +1183,37 @@ body {
     object-fit: contain !important;
     background-color: #050a14; /* Deep navy background to fill the empty sides */
 }
+/* ==========================================
+   ====== IMAGE ALIGNMENT & ZOOM FIXES ======
+   ========================================== */
+
+/* 1. Make the outer slideshow container completely transparent */
+.timeline-img-container.slideshow-container {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+/* 2. Move the rounded corners and cinematic shadow directly onto the images */
+.slideshow-container .slide {
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8); /* Slightly darker shadow for contrast */
+}
+
+/* 3. Anchor adjustments for wide photos */
+.slideshow-container .slide.align-face {
+    object-position: center 15% !important;
+}
+.slideshow-container .slide.align-top {
+    object-position: top center !important;
+}
+
+/* 4. The Magic Unzoom: Shrinks the element's width to tightly hug vertical photos */
+.slideshow-container .slide.unzoom {
+    width: auto !important;          /* Shrinks the border to the exact width of the photo */
+    height: 100% !important;         /* Locks the height so it doesn't break the layout */
+    max-width: 100% !important;
+    left: 50% !important;            /* Pushes the image to the middle */
+    transform: translateX(-50%) !important; /* Centers it perfectly */
+    background-color: transparent !important; /* Removes the old dark background box */
+}
