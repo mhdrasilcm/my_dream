@@ -1,42 +1,38 @@
 name: Refresh Live Data
 
-# Keeps stats.json, matches.json and news.json fresh without anyone touching
-# a keyboard. Every commit this makes automatically triggers a new Cloudflare
-# Pages deployment, since Pages redeploys on every push to the connected branch.
-
 on:
   schedule:
-    - cron: '0 */3 * * *'   # every 3 hours — adjust to taste
-  workflow_dispatch: {}       # lets you trigger a refresh manually from the Actions tab
-
-permissions:
-  contents: write
+    - cron: '0 */5 * * *'
+  workflow_dispatch: 
 
 jobs:
   refresh:
     runs-on: ubuntu-latest
+    
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v3
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v4
         with:
-          python-version: '3.12'
+          python-version: '3.10'
 
-      - name: Fetch latest career stats
+      - name: Fetch Latest News
+        run: python fetch_news.py
+        
+      - name: Fetch Latest Stats
         run: python fetch_stats.py
 
-      - name: Fetch next match schedule
+      - name: Fetch Latest Matches
         run: python fetch_matches.py
 
-      - name: Fetch latest news
-        run: python fetch_news.py
-
-      - name: Commit and push if anything changed
+      - name: Commit and Push Changes
         run: |
-          git config user.name "golden-pitch-bot"
-          git config user.email "actions@users.noreply.github.com"
-          git add stats.json matches.json news.json
-          git diff --cached --quiet || git commit -m "Auto-update live data [skip ci]"
-          git push
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add news.json stats.json matches.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "chore: Auto-update live data" && git push)
+
+      - name: Trigger Cloudflare Pages Rebuild
+        run: curl -X POST "${{ secrets.CLOUDFLARE_DEPLOY_HOOK }}"
