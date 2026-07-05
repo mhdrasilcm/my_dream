@@ -1,9 +1,5 @@
 {
-    "home_team": "INTER MIAMI CF",
-    "home_logo": "https://ssl.gstatic.com/onebox/media/sports/logos/optimized/qbqMtgzKCYVxZMzcB4iQqQ_500x500.png",
-    "away_team": "TBD",
-    "away_logo": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3C/svg%3E",
-    "date": "CHECKING SCHEDULE",
-    "time": "--:--",
-    "league": "MLS Regular Season"
+    "is_tribute": true,
+    "title": "WORLD CUP CHAMPION",
+    "message": "Lionel Messi's historic FIFA World Cup legacy is eternal."
 }
