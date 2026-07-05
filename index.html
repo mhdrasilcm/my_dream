@@ -37,7 +37,7 @@
         <div class="hero-overlay"></div>
         
         <div class="hero-content">
-            <!-- New Dedicated Animated Container for your hero.png -->
+            <!-- Dedicated Animated Container for hero.png -->
             <div class="hero-photo-wrapper animate-pop-in">
                 <img src="hero.png" alt="Lionel Messi Legendary" class="hero-photo">
                 <div class="photo-glow"></div>
@@ -52,7 +52,7 @@
     <!-- Match Center & FIFA Status -->
     <section class="match-center-section animate-fade-up delay-2">
         <div class="match-center-container">
-            <!-- Live Auto-Updating Match Widget (skeleton shimmer until matches.json loads) -->
+            <!-- Live Auto-Updating Match Widget -->
             <div class="status-card">
                 <div class="status-header">NEXT MATCH</div>
                 <div class="match-details">
@@ -93,7 +93,8 @@
 
         <div class="stats-header">
             <h2>MESSI <span>STATS</span></h2>
-                <!-- Data attributes link to app.js -->
+            <!-- FIXED: Added missing tracking container wrapper wrapper here -->
+            <div class="stats-filters" id="stats-tabs">
                 <span data-team="bar">BAR</span> 
                 <span data-team="arg">ARG</span> 
                 <span data-team="psg">PSG</span> 
@@ -172,7 +173,6 @@
         </div>
     </section>
 
-    
     <!-- Permanent Footer -->
     <footer>
         <p>Created with <span style="color: #00b4d8;">&hearts;</span> <strong>MUHAMMED RASIL CM</strong>, PALAKKAD, KERALA, INDIA</p>
@@ -180,7 +180,7 @@
 
     <button id="back-to-top" class="back-to-top" aria-label="Back to top">↑</button>
 
-    <!-- Shared site behavior, then page-specific logic -->
+    <!-- Scripts -->
     <script src="main.js"></script>
     <script src="app.js"></script>
 </body>
