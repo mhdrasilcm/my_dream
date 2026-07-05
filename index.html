@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Track Lionel Messi's career goals, assists, titles and next match live. An interactive stats hub, biography and news feed built by Winewood Devs.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Lionel Messi | The GOAT">
+    <meta property="og:description" content="Live career stats, next match schedule, and the story of football's greatest player.">
+    <meta property="og:image" content="hero.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>Lionel Messi | The GOAT</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <!-- Premium Global Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar animate-fade-down">
+        <div class="logo">MESSI<span>10</span></div>
+        <ul class="nav-links">
+            <li><a href="#stats-section">Stats</a></li>
+            <li><a href="biography.html">Biography</a></li>
+            <li><a href="news.html" class="highlight-link">Latest News</a></li>
+        </ul>
+        <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- Cinematic Hero Section -->
+    <header class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        
+        <div class="hero-content">
+            <!-- New Dedicated Animated Container for your hero.png -->
+            <div class="hero-photo-wrapper animate-pop-in">
+                <img src="hero.png" alt="Lionel Messi Legendary" class="hero-photo">
+                <div class="photo-glow"></div>
+            </div>
+            
+            <h1 class="title animate-fade-up">LIONEL MESSI</h1>
+            <p class="subtitle animate-fade-up delay-1">THE GREATEST OF ALL TIME</p>
+            <a href="#stats-section" class="primary-btn animate-fade-up delay-2">Explore The Legacy</a>
+        </div>
+    </header>
+
+    <!-- Match Center & FIFA Status -->
+    <section class="match-center-section animate-fade-up delay-2">
+        <div class="match-center-container">
+            <!-- Live Auto-Updating Match Widget (skeleton shimmer until matches.json loads) -->
+            <div class="status-card">
+                <div class="status-header">NEXT MATCH</div>
+                <div class="match-details">
+                    <div class="team">
+                        <img id="match-home-logo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3C/svg%3E" alt="Home Team" class="skeleton" loading="lazy">
+                        <span id="match-home-name" class="skeleton">HOME</span>
+                    </div>
+                    <div class="match-info">
+                        <span class="vs">VS</span>
+                        <span id="match-date" class="date skeleton">LOADING...</span>
+                        <span id="match-time" class="time skeleton">--:--</span>
+                        <span id="match-league" class="league skeleton">Fetching live schedule...</span>
+                    </div>
+                    <div class="team">
+                        <img id="match-away-logo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3C/svg%3E" alt="Away Team" class="skeleton" loading="lazy">
+                        <span id="match-away-name" class="skeleton">AWAY</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FIFA Rank Widget -->
+            <div class="status-card">
+                <div class="status-header">FIFA WORLD RANKING</div>
+                <div class="fifa-rank-details">
+                    <span class="rank-number">#1</span>
+                    <span class="rank-country">ARGENTINA 🇦🇷</span>
+                    <span class="rank-points">1858.00 Points</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ultra-Vibrant Stats Dashboard Section -->
+    <section id="stats-section" class="stats-section">
+        <div class="stats-header">
+            <h2>MESSI <span>STATS</span></h2>
+            <div class="stats-filters" id="stats-tabs">
+                <!-- Data attributes link to app.js -->
+                <span data-team="bar">BAR</span> 
+                <span data-team="arg">ARG</span> 
+                <span data-team="psg">PSG</span> 
+                <span data-team="miami">MIAMI</span> 
+                <span data-team="total" class="active">TOTAL</span>
+            </div>
+        </div>
+
+        <div class="stats-container">
+            <!-- Goals Row -->
+            <div class="stat-row reveal-slide">
+                <div class="stat-bar-container">
+                    <div class="stat-bar bg-red" id="bar-goals">
+                        <span class="stat-label">GOALS</span>
+                    </div>
+                    <div class="stat-sub">
+                        <span id="val-repokers">2 REPOKER</span> 
+                        <span id="val-pokers">6 POKER</span> 
+                        <span id="val-hattricks">53 HAT-TRICK</span> 
+                        <span id="val-braces">177 BRACES</span>
+                    </div>
+                </div>
+                <!-- Circle and Ratio Stacked -->
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+                    <div class="stat-circle border-red" id="val-goals">914</div>
+                    <span class="stat-ratio" id="ratio-goals" style="font-size:0.85rem; font-weight:700; color:var(--text-muted);">RATIO 0.79</span>
+                </div>
+            </div>
+
+            <!-- Assists Row -->
+            <div class="stat-row reveal-slide">
+                <div class="stat-bar-container">
+                    <div class="stat-bar bg-blue" id="bar-assists">
+                        <span class="stat-label">ASSISTS</span>
+                    </div>
+                    <div class="stat-sub">
+                        <!-- Space intentionally left blank to match official layout -->
+                    </div>
+                </div>
+                <!-- Circle and Ratio Stacked -->
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+                    <div class="stat-circle border-blue" id="val-assists">416</div>
+                    <span class="stat-ratio" id="ratio-assists" style="font-size:0.85rem; font-weight:700; color:var(--text-muted);">RATIO 0.36</span>
+                </div>
+            </div>
+            
+            <!-- Matches Row -->
+            <div class="stat-row reveal-slide">
+                <div class="stat-bar-container">
+                    <div class="stat-bar bg-purple" id="bar-matches">
+                        <span class="stat-label">MATCHES</span>
+                    </div>
+                </div>
+                <div class="stat-circle border-purple" id="val-matches">1152</div>
+            </div>
+
+            <!-- Titles Row -->
+            <div class="stat-row reveal-slide">
+                <div class="stat-bar-container">
+                    <div class="stat-bar bg-green" id="bar-titles">
+                        <span class="stat-label">TITLES</span>
+                    </div>
+                </div>
+                <div class="stat-circle border-green" id="val-titles">48</div>
+            </div>
+
+            <!-- Awards Row -->
+            <div class="stat-row reveal-slide">
+                <div class="stat-bar-container">
+                    <div class="stat-bar bg-yellow" id="bar-awards">
+                        <span class="stat-label">AWARDS</span>
+                    </div>
+                </div>
+                <div class="stat-circle border-yellow" id="val-awards">57</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Permanent Footer -->
+    <footer>
+        <p>Created by MUHAMMED RASIL CM, Mundur, Palakkad, Kerala.</p>
+    </footer>
+
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">↑</button>
+
+    <!-- Shared site behavior, then page-specific logic -->
+    <script src="main.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

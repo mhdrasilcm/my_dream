@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="ring" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00b4d8"/>
+      <stop offset="100%" stop-color="#ff3344"/>
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="29" fill="#060913" stroke="url(#ring)" stroke-width="4"/>
+  <text x="32" y="43" text-anchor="middle" font-family="Oswald, Arial, sans-serif" font-weight="700" font-size="28" fill="#FFD700">10</text>
+</svg>
