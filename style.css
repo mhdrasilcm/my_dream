@@ -1164,3 +1164,22 @@ body {
         max-width: 100% !important;
     }
 }
+/* ==========================================
+   ====== IMAGE ALIGNMENT & ZOOM FIXES ======
+   ========================================== */
+
+/* Anchors the image slightly near the top so faces are never cut off */
+.slideshow-container .slide.align-face {
+    object-position: center 15% !important;
+}
+
+/* Anchors the image to the absolute top (perfect for holding trophies high) */
+.slideshow-container .slide.align-top {
+    object-position: top center !important;
+}
+
+/* Stops the image from zooming in, fitting the entire vertical photo inside the box */
+.slideshow-container .slide.unzoom {
+    object-fit: contain !important;
+    background-color: #050a14; /* Deep navy background to fill the empty sides */
+}
