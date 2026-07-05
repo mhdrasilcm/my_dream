@@ -2,7 +2,8 @@ name: Refresh Live Data
 
 on:
   schedule:
-    - cron: '0 */5 * * *'
+    # Runs at minute 0 past every 3rd hour
+    - cron: '0 */3 * * *'
   workflow_dispatch: 
 
 jobs:
