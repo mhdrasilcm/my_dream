@@ -125,3 +125,27 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+// --- AUTOMATED BIOGRAPHY SLIDESHOW CORE ---
+document.addEventListener('DOMContentLoaded', () => {
+    const slideshows = document.querySelectorAll('.slideshow-container');
+    
+    slideshows.forEach(container => {
+        const slides = container.querySelectorAll('.slide');
+        
+        // Skip operation if the container only has one image asset
+        if (slides.length <= 1) return;
+        
+        let currentIdx = 0;
+        
+        setInterval(() => {
+            // Remove active status from current image
+            slides[currentIdx].classList.remove('active');
+            
+            // Increment index pointer, wrapping around smoothly back to zero
+            currentIdx = (currentIdx + 1) % slides.length;
+            
+            // Apply active status to reveal the next image
+            slides[currentIdx].classList.add('active');
+        }, 4000); // 4000ms = 4 seconds per image frame
+    });
+});

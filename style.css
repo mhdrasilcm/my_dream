@@ -1080,4 +1080,87 @@ body {
         text-align: center;
         padding: 10px 0;
     }
+}/* --- CINEMATIC SLIDESHOW COMPONENT --- */
+.slideshow-container {
+    position: relative;
+    overflow: hidden;
+    height: 350px; /* Standard baseline height for desktop layouts */
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.02);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.slideshow-container .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    z-index: 1;
+    transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Seamless blending transition */
+}
+
+/* The active class handles drawing the current picture into view */
+.slideshow-container .slide.active {
+    opacity: 1;
+    z-index: 2;
+}
+
+/* Fluid responsive adjustment for tablets and smartphones */
+@media (max-width: 992px) {
+    .slideshow-container {
+        height: 280px !important;
+        width: 100%;
+    }
+}
+/* ==========================================
+   === TIMELINE & SLIDESHOW ALIGNMENT FIX ===
+   ========================================== */
+
+/* Forces the desktop layout to spread evenly and align items dead-center vertically */
+.timeline-item {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 60px !important;
+    margin-bottom: 100px;
+    width: 100%;
+}
+
+/* Flips the structure flawlessly for the even chapters (2 and 4) */
+.timeline-item.reverse {
+    flex-direction: row-reverse !important;
+}
+
+/* Standardizes both columns to take up exactly 50% of the grid space */
+.timeline-img-container.slideshow-container, 
+.timeline-text {
+    flex: 1 !important;
+    width: 50% !important;
+    max-width: 50% !important;
+}
+
+/* Anchors the slideshow images so they scale seamlessly without shifting out of alignment */
+.slideshow-container .slide {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Fills the container frame cleanly */
+    object-position: center center; /* Forces the subject of the photo to stay locked in the middle */
+}
+
+/* Smooth fallback adjustment for tablets/phones so everything stacks nicely down the middle */
+@media (max-width: 992px) {
+    .timeline-item, .timeline-item.reverse {
+        flex-direction: column !important;
+        gap: 30px !important;
+        margin-bottom: 60px;
+    }
+    
+    .timeline-img-container.slideshow-container, 
+    .timeline-text {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
 }

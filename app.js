@@ -120,3 +120,36 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchStats();
     fetchNextMatch();
 });
+// --- LIVE ACHIEVEMENTS RENDERER ---
+async function fetchAchievements() {
+    const grid = document.getElementById('achievements-grid');
+    if (!grid) return; // Safely ignore this if we aren't on the Achievements page
+
+    try {
+        const response = await fetch('achievements.json?v=' + new Date().getTime());
+        if (!response.ok) throw new Error('Achievements data not found');
+        const data = await response.json();
+        
+        grid.innerHTML = ''; // Clear container
+        
+        data.forEach((item, index) => {
+            const card = document.createElement('div');
+            // Adding a slight delay to each card so they cascade in smoothly
+            card.className = `award-card animate-fade-up delay-${index + 1}`; 
+            card.innerHTML = `
+                <div class="award-count">${item.count}</div>
+                <h3 class="award-name">${item.title}</h3>
+                <p class="award-desc">${item.description}</p>
+            `;
+            grid.appendChild(card);
+        });
+        
+    } catch (error) {
+        console.error("Error loading achievements:", error);
+    }
+}
+
+// Make sure to call it when the page loads!
+document.addEventListener('DOMContentLoaded', () => {
+    fetchAchievements();
+});
