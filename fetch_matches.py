@@ -26,13 +26,28 @@ def fetch_schedule():
                 next_event = event
                 break
                 
-        # Trigger Condition: No future matches found (Eliminated) OR Tournament is over
-        if not next_event or current_date > wc_end_date:
+        # 1. Is the World Cup completely over?
+        if current_date > wc_end_date:
             match_data = {
                 "is_tribute": True,
                 "title": "WORLD CUP CHAMPION",
                 "message": "Lionel Messi's historic FIFA World Cup legacy is eternal."
             }
+            
+        # 2. Is the World Cup ongoing, but the API hasn't updated the bracket yet?
+        elif not next_event:
+            match_data = {
+                "is_tribute": False,
+                "home_team": "ARGENTINA",
+                "home_logo": "https://ssl.gstatic.com/onebox/media/sports/logos/optimized/1xBWyjjkA6vEWopPK3lIPA_500x500.png",
+                "away_team": "TBD",
+                "away_logo": "https://via.placeholder.com/60",
+                "date": "AWAITING NEXT OPPONENT",
+                "time": "--:--",
+                "league": "FIFA World Cup Knockout Stage"
+            }
+            
+        # 3. Future match found!
         else:
             competition = next_event['competitions'][0]
             competitors = competition['competitors']
@@ -56,18 +71,22 @@ def fetch_schedule():
             }
             
     except Exception as e:
-        print(f"Error fetching data. Defaulting to Legacy Mode: {e}")
-        # Bulletproof fallback ensures site never crashes, just reverts to the golden trophy
+        print(f"Error fetching data. Defaulting to bracket waiting mode: {e}")
         match_data = {
-            "is_tribute": True,
-            "title": "WORLD CUP CHAMPION",
-            "message": "Lionel Messi's historic FIFA World Cup legacy is eternal."
+            "is_tribute": False,
+            "home_team": "ARGENTINA",
+            "home_logo": "https://ssl.gstatic.com/onebox/media/sports/logos/optimized/1xBWyjjkA6vEWopPK3lIPA_500x500.png",
+            "away_team": "TBD",
+            "away_logo": "https://via.placeholder.com/60",
+            "date": "CHECKING SCHEDULE",
+            "time": "TBD",
+            "league": "FIFA World Cup"
         }
         
     with open('matches.json', 'w', encoding='utf-8') as f:
         json.dump(match_data, f, indent=4)
         
-    print("Match schedule / Tribute logic compiled successfully.")
+    print("Match schedule logic compiled successfully.")
 
 if __name__ == "__main__":
     fetch_schedule()
