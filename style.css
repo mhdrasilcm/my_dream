@@ -748,3 +748,99 @@ footer strong {
     color: #ffffff;
     font-weight: 900;
 }
+/* --- UNIVERSAL MESSI.COM AESTHETIC --- */
+.premium-section {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Sharp Diagonal Shadow Overlay */
+.premium-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 40%; height: 100%;
+    background: linear-gradient(110deg, rgba(6, 9, 19, 0.9) 0%, transparent 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Universal Massive Background Text */
+.bg-watermark {
+    position: absolute;
+    top: 50%;
+    right: -20px;
+    transform: translateY(-50%);
+    font-size: 16rem;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.08);
+    z-index: 0;
+    pointer-events: none;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+    .bg-watermark {
+        font-size: 8rem;
+        top: 20%;
+    }
+}
+
+/* --- ACHIEVEMENTS PAGE SPECIFICS --- */
+.awards-section {
+    padding: 4rem 5% 6rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.awards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.award-card {
+    background: rgba(15, 22, 38, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 40px 30px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    text-align: center;
+    transition: var(--transition-smooth);
+}
+
+.award-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(255, 215, 0, 0.15); /* Gold Glow */
+    border-color: rgba(255, 215, 0, 0.4);
+}
+
+.award-count {
+    font-family: 'Oswald', sans-serif;
+    font-size: 5rem;
+    font-weight: 900;
+    color: #ffd700;
+    line-height: 1;
+    margin-bottom: 10px;
+    text-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+}
+
+.award-name {
+    font-size: 1.5rem;
+    font-family: 'Oswald', sans-serif;
+    color: var(--text-main);
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.award-desc {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}

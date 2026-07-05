@@ -72,37 +72,49 @@ document.addEventListener('DOMContentLoaded', () => {
         'match-date', 'match-time', 'match-league'
     ];
 
+    // --- LIVE MATCH CENTER & TRIBUTE LOGIC ---
     async function fetchNextMatch() {
         try {
-            // Cache-buster added here too, to prevent a stale "LOADING..." freeze
             const response = await fetch('matches.json?v=' + new Date().getTime());
             if (!response.ok) throw new Error('Match data not found');
             const matchData = await response.json();
-
-            document.getElementById('match-home-name').innerText = matchData.home_team;
-            document.getElementById('match-home-logo').src = matchData.home_logo;
-
-            document.getElementById('match-away-name').innerText = matchData.away_team;
-            document.getElementById('match-away-logo').src = matchData.away_logo;
-
-            document.getElementById('match-date').innerText = matchData.date;
-            document.getElementById('match-time').innerText = matchData.time;
-            document.getElementById('match-league').innerText = matchData.league;
-
-            // Swap the shimmering skeleton state out for a soft fade-in
-            matchFieldIds.forEach((id) => {
-                const el = document.getElementById(id);
-                if (!el) return;
-                el.classList.remove('skeleton');
-                el.classList.add('match-fade-in');
-            });
+            
+            const matchDetailsContainer = document.querySelector('.match-details');
+            const headerText = document.querySelector('.status-card .status-header');
+            
+            // Check if Python signaled that the WC is over or Argentina is eliminated
+            if (matchData.is_tribute) {
+                headerText.innerText = "LEGACY";
+                matchDetailsContainer.innerHTML = `
+                    <div style="display: flex; flex-direction: column; align-items: center; text-align: center; width: 100%; gap: 15px; animation: fadeUp 1s ease forwards;">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3112/3112946.png" style="width: 80px; filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8));" alt="Golden Trophy">
+                        <h3 style="color: #ffd700; font-family: 'Oswald', sans-serif; font-size: 1.5rem; letter-spacing: 2px;">${matchData.title}</h3>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">${matchData.message}</p>
+                    </div>
+                `;
+            } else {
+                // If they are still playing, display the normal match schedule
+                headerText.innerText = "NEXT MATCH";
+                document.getElementById('match-home-name').innerText = matchData.home_team;
+                document.getElementById('match-home-logo').src = matchData.home_logo;
+                
+                document.getElementById('match-away-name').innerText = matchData.away_team;
+                document.getElementById('match-away-logo').src = matchData.away_logo;
+                
+                document.getElementById('match-date').innerText = matchData.date;
+                document.getElementById('match-time').innerText = matchData.time;
+                document.getElementById('match-league').innerText = matchData.league;
+                
+                // Clear loading skeletons
+                document.querySelectorAll('.skeleton').forEach(el => el.classList.remove('skeleton'));
+            }
+            
         } catch (error) {
-            console.error('Error loading match data:', error);
-            const dateEl = document.getElementById('match-date');
-            dateEl.classList.remove('skeleton');
-            dateEl.innerText = 'SCHEDULE UNAVAILABLE';
+            console.error("Error loading match data:", error);
+            document.getElementById('match-date').innerText = "UNAVAILABLE";
         }
     }
+    
 
     // --- INITIALIZE EVERYTHING ---
     fetchStats();
