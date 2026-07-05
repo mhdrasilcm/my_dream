@@ -28,7 +28,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateStats(teamKey) {
         if (!liveStatsData[teamKey]) return;
+        
+        // Update the massive background text
+        document.getElementById('bg-watermark').innerText = teamKey;
+        
         const data = liveStatsData[teamKey];
+        // ... rest of the existing code ...
 
         // Update main bars with an eased width transition and an animated count-up
         Object.keys(elements).forEach((stat) => {

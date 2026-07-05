@@ -9,7 +9,7 @@
     <meta property="og:description" content="Live career stats, next match schedule, and the story of football's greatest player.">
     <meta property="og:image" content="hero.png">
     <meta name="twitter:card" content="summary_large_image">
-    <title>Lionel Mess | The GOAT</title>
+    <title>Lionel Messi | The GOAT</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <!-- Premium Global Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -86,10 +86,13 @@
     </section>
 
     <!-- Ultra-Vibrant Stats Dashboard Section -->
-    <section id="stats-section" class="stats-section">
+    <section id="stats-section" class="stats-section" style="position: relative; overflow: hidden;">
+        
+        <!-- Official Messi.com Style Background Watermark -->
+        <div class="stats-watermark" id="bg-watermark">TOTAL</div>
+
         <div class="stats-header">
             <h2>MESSI <span>STATS</span></h2>
-            <div class="stats-filters" id="stats-tabs">
                 <!-- Data attributes link to app.js -->
                 <span data-team="bar">BAR</span> 
                 <span data-team="arg">ARG</span> 
@@ -169,9 +172,10 @@
         </div>
     </section>
 
+    
     <!-- Permanent Footer -->
     <footer>
-        <p>Created by MUHAMMED RASIL CM, Mundur, Palakkad, Kerala.</p>
+        <p>Created with <span style="color: #00b4d8;">&hearts;</span> <strong>MUHAMMED RASIL CM</strong>, PALAKKAD, KERALA, INDIA</p>
     </footer>
 
     <button id="back-to-top" class="back-to-top" aria-label="Back to top">↑</button>

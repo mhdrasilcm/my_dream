@@ -696,3 +696,55 @@ footer {
     }
     .reveal-hidden { opacity: 1 !important; transform: none !important; }
 }
+/* --- OFFICIAL MESSI.COM AESTHETIC --- */
+
+/* Massive Hollow Background Text */
+.stats-watermark {
+    position: absolute;
+    top: 50%;
+    right: -20px;
+    transform: translateY(-50%);
+    font-size: 16rem;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.08);
+    z-index: 0;
+    pointer-events: none;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Ensure stats sit on top of the watermark */
+.stats-container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Diagonal shadow to create depth like the official site */
+.stats-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 40%; height: 100%;
+    background: linear-gradient(110deg, rgba(6, 9, 19, 0.9) 0%, transparent 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Updated Footer Branding */
+footer {
+    text-align: center;
+    padding: 3rem 2rem;
+    background-color: var(--bg-dark);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+footer strong {
+    color: #ffffff;
+    font-weight: 900;
+}
