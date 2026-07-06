@@ -41,19 +41,14 @@
 
     <!-- Official Style Awards Section -->
     <main class="premium-section awards-section animate-fade-up delay-2">
-        
         <!-- Massive Hollow Background Text -->
         <div class="bg-watermark">LEGACY</div>
         
-        <!-- Glowing Grid -->
-        <!-- Glowing Grid: Auto-populated by app.js -->
-        <div class="awards-grid" id="achievements-grid" style="position: relative; z-index: 2;">
+        <!-- Glowing Grid: This is where JS will inject your achievements! -->
+        <div id="achievements-container" class="awards-grid" style="position: relative; z-index: 2; display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin-bottom: 60px;">
             <!-- Data will be injected here automatically by the Python pipeline -->
         </div>
     </main>
-
-    <!-- This is where JS will inject your achievements! -->
-    <div id="achievements-container" style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin-bottom: 60px;"></div>
 
     <!-- The New Auto-Updating Comparison Section -->
     <section class="premium-section comparison-section animate-fade-up">
