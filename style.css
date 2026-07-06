@@ -1276,23 +1276,42 @@ body {
     margin-bottom: 20px;
     letter-spacing: 1px;
 }
-.stat-row {
+/* OVERRIDE: Fix class collision from home page progress bars */
+.player-card .stat-row {
     display: flex;
     justify-content: space-between;
-    padding: 12px 0;
+    align-items: center;
+    padding: 15px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background 0.3s ease;
 }
-.stat-row:last-child {
+
+.player-card .stat-row:hover {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.player-card .stat-row:last-child {
     border-bottom: none;
 }
-.stat-label {
-    font-weight: 700;
-    color: #888;
+
+/* Force the labels back into their proper grid columns */
+.player-card .stat-label {
+    position: static !important; /* Strips the absolute positioning */
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    color: #8a94a6 !important;
+    text-shadow: none !important;
+    letter-spacing: normal !important;
+    pointer-events: auto !important;
 }
-.stat-value {
+
+.player-card .stat-value {
+    font-family: 'Oswald', sans-serif;
     font-weight: 900;
-    color: #fff;
-    font-size: 1.2rem;
+    color: #ffffff;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
 }
 .last-updated {
     text-align: center;
