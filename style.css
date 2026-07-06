@@ -1221,6 +1221,36 @@ body {
     background-color: #050a14 !important; /* Fills empty sides with dark color */
 }
 /* ==========================================
+   ======== ACHIEVEMENTS GRID CARDS =========
+   ========================================== */
+.achievement-card {
+    background: #050a14;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 30px;
+    width: calc(50% - 20px); /* Forces exactly two cards per row */
+    min-width: 300px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    text-align: left;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    /* Ensure the content aligns nicely */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.achievement-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0, 180, 216, 0.5); /* Subtle blue glow on hover */
+}
+
+/* Mobile Responsive Rule */
+@media (max-width: 768px) {
+    .achievement-card {
+        width: 100%; /* Stacks them 1-by-1 on phones */
+    }
+}
+/* ==========================================
    ====== MESSI VS RONALDO COMPARISON ======
    ========================================== */
 .comparison-grid {
