@@ -222,21 +222,23 @@ function loadComparison() {
     };
         
     container.innerHTML = `
+        <!-- Add the new messi-card class right here! -->
         <div class="player-card messi-card">
             <h3>${comparisonData.messi.name}</h3>
-            <div class="stat-row"><span class="stat-label">World Cups</span> <span class="stat-value" style="color: #ffd700; font-size: 1.6rem;">${comparisonData.messi.world_cups} 🏆</span></div>
+            <div class="stat-row"><span class="stat-label">World Cups</span> <span class="stat-value" style="color: #f3b229;">${comparisonData.messi.world_cups}</span></div>
+            <div class="stat-row"><span class="stat-label">Ballon d'Or</span> <span class="stat-value" style="color: #f3b229;">${comparisonData.messi.ballondor}</span></div>
             <div class="stat-row"><span class="stat-label">Age</span> <span class="stat-value">${comparisonData.messi.age}</span></div>
-            <div class="stat-row"><span class="stat-label">Ballon d'Or</span> <span class="stat-value" style="color: #ffd700;">${comparisonData.messi.ballondor}</span></div>
             <div class="stat-row"><span class="stat-label">Career Goals</span> <span class="stat-value">${comparisonData.messi.goals}</span></div>
             <div class="stat-row"><span class="stat-label">Career Assists</span> <span class="stat-value">${comparisonData.messi.assists}</span></div>
             <div class="stat-row"><span class="stat-label">Matches Played</span> <span class="stat-value">${comparisonData.messi.matches}</span></div>
         </div>
         
-        <div class="player-card ronaldo-card">
+        <!-- Leave Ronaldo's card as standard -->
+        <div class="player-card">
             <h3>${comparisonData.ronaldo.name}</h3>
             <div class="stat-row"><span class="stat-label">World Cups</span> <span class="stat-value">${comparisonData.ronaldo.world_cups}</span></div>
+            <div class="stat-row"><span class="stat-label">Ballon d'Or</span> <span class="stat-value" style="color: #f3b229;">${comparisonData.ronaldo.ballondor}</span></div>
             <div class="stat-row"><span class="stat-label">Age</span> <span class="stat-value">${comparisonData.ronaldo.age}</span></div>
-            <div class="stat-row"><span class="stat-label">Ballon d'Or</span> <span class="stat-value" style="color: #ffd700;">${comparisonData.ronaldo.ballondor}</span></div>
             <div class="stat-row"><span class="stat-label">Career Goals</span> <span class="stat-value">${comparisonData.ronaldo.goals}</span></div>
             <div class="stat-row"><span class="stat-label">Career Assists</span> <span class="stat-value">${comparisonData.ronaldo.assists}</span></div>
             <div class="stat-row"><span class="stat-label">Matches Played</span> <span class="stat-value">${comparisonData.ronaldo.matches}</span></div>
