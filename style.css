@@ -1261,13 +1261,11 @@ body {
     width: 100%;
 }
 .player-card {
-    background: #050a14;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 12px;
-    padding: 30px;
-    width: 45%;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    background: #0a101d !important; /* Slightly lighter navy surface */
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7) !important;
+    position: relative;
+    z-index: 2;
 }
 .player-card h3 {
     color: #00b4d8;
@@ -1328,4 +1326,12 @@ body {
     .player-card {
         width: 100%;
     }
+}
+/* Balance lighting across both cards so neither looks muted */
+
+
+/* Give Messi's side a dedicated hero glow to make it pop */
+.player-card.messi-card {
+    border-color: rgba(0, 180, 216, 0.4) !important;
+    box-shadow: 0 10px 35px rgba(0, 180, 216, 0.15) !important;
 }

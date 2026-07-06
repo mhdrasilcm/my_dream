@@ -193,48 +193,53 @@ function loadAchievements() {
 }
 
 // 2. Load Messi vs Ronaldo Comparison (Live 2026 Data)
+// 2. Load Messi vs Ronaldo Comparison (Updated Order & Age)
 function loadComparison() {
     const container = document.getElementById('comparison-container');
     if (!container) return;
 
     // Up-to-date 2026 Stats
     const comparisonData = {
-        "last_updated": new Date().toLocaleString(), // Auto-generates today's date & time
+        "last_updated": new Date().toLocaleString(),
         "messi": {
             "name": "Lionel Messi",
+            "age": "39",
+            "world_cups": "1",
+            "ballondor": "8",
             "goals": "917",
             "assists": "453",
-            "matches": "1159",
-            "ballondor": "8",
-            "world_cups": "1"
+            "matches": "1159"
         },
         "ronaldo": {
             "name": "Cristiano Ronaldo",
+            "age": "41",
+            "world_cups": "0",
+            "ballondor": "5",
             "goals": "976", 
             "assists": "307",
-            "matches": "1325",
-            "ballondor": "5",
-            "world_cups": "0"
+            "matches": "1325"
         }
     };
         
     container.innerHTML = `
-        <div class="player-card">
+        <div class="player-card messi-card">
             <h3>${comparisonData.messi.name}</h3>
+            <div class="stat-row"><span class="stat-label">World Cups</span> <span class="stat-value" style="color: #ffd700; font-size: 1.6rem;">${comparisonData.messi.world_cups} 🏆</span></div>
+            <div class="stat-row"><span class="stat-label">Age</span> <span class="stat-value">${comparisonData.messi.age}</span></div>
+            <div class="stat-row"><span class="stat-label">Ballon d'Or</span> <span class="stat-value" style="color: #ffd700;">${comparisonData.messi.ballondor}</span></div>
             <div class="stat-row"><span class="stat-label">Career Goals</span> <span class="stat-value">${comparisonData.messi.goals}</span></div>
             <div class="stat-row"><span class="stat-label">Career Assists</span> <span class="stat-value">${comparisonData.messi.assists}</span></div>
             <div class="stat-row"><span class="stat-label">Matches Played</span> <span class="stat-value">${comparisonData.messi.matches}</span></div>
-            <div class="stat-row"><span class="stat-label">Ballon d'Or</span> <span class="stat-value" style="color: #f3b229;">${comparisonData.messi.ballondor}</span></div>
-            <div class="stat-row"><span class="stat-label">World Cups</span> <span class="stat-value" style="color: #f3b229;">${comparisonData.messi.world_cups}</span></div>
         </div>
         
-        <div class="player-card">
+        <div class="player-card ronaldo-card">
             <h3>${comparisonData.ronaldo.name}</h3>
+            <div class="stat-row"><span class="stat-label">World Cups</span> <span class="stat-value">${comparisonData.ronaldo.world_cups}</span></div>
+            <div class="stat-row"><span class="stat-label">Age</span> <span class="stat-value">${comparisonData.ronaldo.age}</span></div>
+            <div class="stat-row"><span class="stat-label">Ballon d'Or</span> <span class="stat-value" style="color: #ffd700;">${comparisonData.ronaldo.ballondor}</span></div>
             <div class="stat-row"><span class="stat-label">Career Goals</span> <span class="stat-value">${comparisonData.ronaldo.goals}</span></div>
             <div class="stat-row"><span class="stat-label">Career Assists</span> <span class="stat-value">${comparisonData.ronaldo.assists}</span></div>
             <div class="stat-row"><span class="stat-label">Matches Played</span> <span class="stat-value">${comparisonData.ronaldo.matches}</span></div>
-            <div class="stat-row"><span class="stat-label">Ballon d'Or</span> <span class="stat-value" style="color: #f3b229;">${comparisonData.ronaldo.ballondor}</span></div>
-            <div class="stat-row"><span class="stat-label">World Cups</span> <span class="stat-value">${comparisonData.ronaldo.world_cups}</span></div>
         </div>
     `;
     
