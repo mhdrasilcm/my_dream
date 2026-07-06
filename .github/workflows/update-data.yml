@@ -33,6 +33,9 @@ jobs:
       - name: Fetch Latest Achievements
         run: python fetch_achievements.py
 
+      - name: Fetch Latest Comparison Data
+        run: python fetch_comparison.py
+
       # Updated: Staged achievements.json alongside your other files
       - name: Commit and Push Changes
         run: |

@@ -149,3 +149,70 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 4000); // 4000ms = 4 seconds per image frame
     });
 });
+
+// 1. Load Achievements
+async function loadAchievements() {
+    const container = document.getElementById('achievements-container');
+    if (!container) return; // Only runs if you are on the achievements page
+
+    try {
+        const response = await fetch('achievements.json');
+        const data = await response.json();
+        
+        container.innerHTML = data.map(ach => `
+            <div class="achievement-card">
+                <h3 style="color: #00b4d8; font-size: 2.5rem;">${ach.count}</h3>
+                <h4>${ach.title}</h4>
+                <p>${ach.description}</p>
+            </div>
+        `).join('');
+    } catch (error) {
+        console.error('Error loading achievements:', error);
+    }
+}
+
+// 2. Load Messi vs Ronaldo Comparison
+async function loadComparison() {
+    const container = document.getElementById('comparison-container');
+    if (!container) return;
+
+    try {
+        const response = await fetch('comparison.json');
+        const data = await response.json();
+        
+        container.innerHTML = `
+            <div class="player-card">
+                <h3>${data.messi.name}</h3>
+                <div class="stat-row"><span class="stat-label">Goals</span> <span class="stat-value">${data.messi.goals}</span></div>
+                <div class="stat-row"><span class="stat-label">Assists</span> <span class="stat-value">${data.messi.assists}</span></div>
+                <div class="stat-row"><span class="stat-label">Matches</span> <span class="stat-value">${data.messi.matches}</span></div>
+                <div class="stat-row"><span class="stat-label">Ballon d'Or</span> <span class="stat-value">${data.messi.ballondor}</span></div>
+                <div class="stat-row"><span class="stat-label">World Cups</span> <span class="stat-value">${data.messi.world_cups}</span></div>
+            </div>
+            
+            <div class="player-card">
+                <h3>${data.ronaldo.name}</h3>
+                <div class="stat-row"><span class="stat-label">Goals</span> <span class="stat-value">${data.ronaldo.goals}</span></div>
+                <div class="stat-row"><span class="stat-label">Assists</span> <span class="stat-value">${data.ronaldo.assists}</span></div>
+                <div class="stat-row"><span class="stat-label">Matches</span> <span class="stat-value">${data.ronaldo.matches}</span></div>
+                <div class="stat-row"><span class="stat-label">Ballon d'Or</span> <span class="stat-value">${data.ronaldo.ballondor}</span></div>
+                <div class="stat-row"><span class="stat-label">World Cups</span> <span class="stat-value">${data.ronaldo.world_cups}</span></div>
+            </div>
+        `;
+        
+        // Add the automated timestamp
+        const updateText = document.createElement('div');
+        updateText.className = 'last-updated';
+        updateText.innerText = 'Last Auto-Updated: ' + data.last_updated;
+        container.parentElement.appendChild(updateText);
+        
+    } catch (error) {
+        console.error('Error loading comparison:', error);
+    }
+}
+
+// Boot up both functions when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+    loadAchievements();
+    loadComparison();
+});

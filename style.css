@@ -1220,3 +1220,63 @@ body {
     object-fit: contain !important; /* Shrinks photo to fit without cropping */
     background-color: #050a14 !important; /* Fills empty sides with dark color */
 }
+/* ==========================================
+   ====== MESSI VS RONALDO COMPARISON ======
+   ========================================== */
+.comparison-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 40px;
+    width: 100%;
+}
+.player-card {
+    background: #050a14;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 30px;
+    width: 45%;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+.player-card h3 {
+    color: #00b4d8;
+    font-family: 'Oswald', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.stat-row:last-child {
+    border-bottom: none;
+}
+.stat-label {
+    font-weight: 700;
+    color: #888;
+}
+.stat-value {
+    font-weight: 900;
+    color: #fff;
+    font-size: 1.2rem;
+}
+.last-updated {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #555;
+    margin-top: 30px;
+    font-family: monospace;
+}
+
+@media (max-width: 992px) {
+    .comparison-grid {
+        flex-direction: column;
+    }
+    .player-card {
+        width: 100%;
+    }
+}
