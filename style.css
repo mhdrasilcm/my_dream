@@ -1266,6 +1266,11 @@ body {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7) !important;
     position: relative;
     z-index: 2;
+    /* Restoring the missing layout properties below: */
+    width: 45%;
+    min-width: 320px;
+    padding: 40px;
+    border-radius: 12px;
 }
 .player-card h3 {
     color: #00b4d8;
