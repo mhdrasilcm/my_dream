@@ -1,0 +1,19 @@
+{
+    "last_updated": "2026-07-21 13:48 UTC",
+    "messi": {
+        "name": "Lionel Messi",
+        "goals": "917",
+        "assists": "453",
+        "matches": "1159",
+        "ballondor": "8",
+        "world_cups": "1"
+    },
+    "ronaldo": {
+        "name": "Cristiano Ronaldo",
+        "goals": "974",
+        "assists": "307",
+        "matches": "1325",
+        "ballondor": "5",
+        "world_cups": "0"
+    }
+}
