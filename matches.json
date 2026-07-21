@@ -1,10 +1,10 @@
 {
     "is_tribute": false,
-    "home_team": "ENGLAND",
+    "home_team": "ARGENTINA",
     "home_logo": "https://ssl.gstatic.com/onebox/media/sports/logos/optimized/1xBWyjjkA6vEWopPK3lIPA_500x500.png",
-    "away_team": "ARGENTINA",
-    "away_logo": "https://ssl.gstatic.com/onebox/media/sports/logos/optimized/lYah1Uqw37XdicC6C4HNqg_500x500.png",
-    "date": "WED, JUL 15",
-    "time": "12:00 PM (EST)",
+    "away_team": "TBD",
+    "away_logo": "https://via.placeholder.com/60",
+    "date": "CHECKING SCHEDULE",
+    "time": "TBD",
     "league": "FIFA World Cup"
 }

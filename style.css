@@ -696,6 +696,94 @@ footer {
     }
     .reveal-hidden { opacity: 1 !important; transform: none !important; }
 }
+
+/* ============================================================
+   ======== 3D EFFECTS ENGINE — STYLES ========
+   ============================================================ */
+
+/* Canvas behind everything */
+#three-bg {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+#three-bg canvas {
+    display: block;
+}
+
+/* Tilt-card base — smooth 3D hover rotation */
+.tilt-card {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease !important;
+    will-change: transform;
+}
+
+/* Hero content depth container */
+.hero-3d-container {
+    perspective: 800px;
+}
+
+/* Floating gradient orbs that drift in the background */
+#floating-orbs {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+@keyframes floatOrb {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(30px, -25px) scale(1.1); }
+    50% { transform: translate(-25px, 35px) scale(0.9); }
+    75% { transform: translate(25px, 20px) scale(1.05); }
+}
+
+/* Stats watermark 3D depth — subtle transform pulse */
+@keyframes watermarkPulse {
+    0%, 100% { transform: translateY(-50%) scale(1); opacity: 1; }
+    50% { transform: translateY(-50%) scale(1.04); opacity: 0.85; }
+}
+.stats-watermark, .bg-watermark {
+    transform-style: preserve-3d;
+    animation: watermarkPulse 8s ease-in-out infinite;
+}
+
+/* Deep 3D perspective on stat circles */
+.stat-circle {
+    transform-style: preserve-3d;
+}
+
+/* Enhanced 3D card glow on tilt — deep shadow on hover */
+.tilt-card:hover {
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Section 3D depth spacers */
+.section-3d {
+    perspective: 1200px;
+}
+
+/* Silver shimmer line for 3D edge highlights */
+.edge-3d {
+    position: relative;
+}
+.edge-3d::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+    pointer-events: none;
+}
+
+/* Scroll-driven 3D perspective on sections */
+.perspective-scroll {
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
 /* --- OFFICIAL MESSI.COM AESTHETIC --- */
 
 /* Massive Hollow Background Text */

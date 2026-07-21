@@ -17,6 +17,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <!-- Three.js for 3D Background -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -39,7 +41,7 @@
         <div class="hero-bg"></div>
         <div class="hero-overlay"></div>
         
-        <div class="hero-content">
+        <div class="hero-content hero-3d-content">
             <!-- Dedicated Animated Container for hero.png -->
             <div class="hero-photo-wrapper animate-pop-in">
                 <img src="hero.png" alt="Lionel Messi Legendary" class="hero-photo">
@@ -56,7 +58,7 @@
     <section class="match-center-section animate-fade-up delay-2">
         <div class="match-center-container">
             <!-- Live Auto-Updating Match Widget -->
-            <div class="status-card">
+            <div class="status-card tilt-card">
                 <div class="status-header">NEXT MATCH</div>
                 <div class="match-details">
                     <div class="team">
@@ -77,7 +79,7 @@
             </div>
 
             <!-- FIFA Rank Widget -->
-            <div class="status-card">
+            <div class="status-card tilt-card">
                 <div class="status-header">FIFA WORLD RANKING</div>
                 <div class="fifa-rank-details">
                     <span class="rank-number">#1</span>
@@ -186,5 +188,6 @@
     <!-- Scripts -->
     <script src="main.js"></script>
     <script src="app.js"></script>
+    <script src="3d-effects.js"></script>
 </body>
 </html>
